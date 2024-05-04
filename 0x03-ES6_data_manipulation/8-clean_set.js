@@ -1,6 +1,6 @@
 export default function cleanSet(set, startString) {
   const filteredValues = [];
-  if (startString === '' || typeof (startString) !== 'string') {
+  if (startString.length === 0 || typeof (startString) !== 'string' || !(set instanceof Set)) {
     return '';
   }
   set.forEach((element) => {
