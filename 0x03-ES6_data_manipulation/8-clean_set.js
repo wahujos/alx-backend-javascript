@@ -24,7 +24,7 @@ export default function cleanSet(set, startString) {
   }
 
   return [...set]
-    .filter((value) => value.startsWith(startString)) // Filter values that start with startString
-    .map((value) => value.slice(startString.length)) // Map to remove startString from each value
+    .filter((value) => (value !== undefined ? value.startsWith(startString) : '')) // Filter values that start with startString
+    .map((value) => (value !== undefined ? value.slice(startString.length) : '')) // Map to remove startString from each value
     .join('-'); // Join the filtered and mapped values with '-'
 }
