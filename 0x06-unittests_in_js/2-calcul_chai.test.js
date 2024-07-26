@@ -1,6 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
-const calculate = require('./1-calcul.js');
+const calculate = require('./2-calcul_chai.js');
 describe('calculate', function(){
     describe('SUM', function() {
         it('returns the sum of two rounded numbers', function() {
