@@ -1,21 +1,14 @@
-const request = require('supertest');
-const app = require('./api');
+const request = require('request');
 const { expect } = require('chai');
 
+describe('Basic Integration testing', () => {
+  const API_URL = 'http://localhost:7865';
 
-describe('Index Page', () => {
-    it('should return status code 200', (done) => {
-        request(app)
-            .get('/')
-            .expect(200, done);
+  it('get / returns correct response', (done) => {
+    request.get(`${API_URL}/`, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome to the payment system');
+      done();
     });
-
-    it('should return the correct message', (done) => {
-        request(app)
-            .get('/')
-            .end((err, res) => {
-                expect(res.text).to.equal('Welcome to the payment system');
-                done();
-            });
-    });
+  });
 });
