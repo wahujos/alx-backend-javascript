@@ -1,11 +1,11 @@
 const request = require('request');
 const { expect } = require('chai');
 
-describe('Basic Integration testing', () => {
-  const API_URL = 'http://localhost:7865';
+describe('API integration test', () => {
+  const URL= 'http://localhost:7865';
 
-  it('get / returns correct response', (done) => {
-    request.get(`${API_URL}/`, (_err, res, body) => {
+  it('GET / returns correct response', (done) => {
+    request.get(`${URL}/`, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(200);
       expect(body).to.be.equal('Welcome to the payment system');
       done();
@@ -28,7 +28,7 @@ describe('Basic Integration testing', () => {
   });
 
   it('GET /cart/:id returns 404 response for non-numeric values in :id', (done) => {
-    request.get(`${URL}/cart/hello`, (_err, res, _body) => {
+    request.get(`${URL}/cart/d200-44a5-9de6`, (_err, res, _body) => {
       expect(res.statusCode).to.be.equal(404);
       done();
     });
